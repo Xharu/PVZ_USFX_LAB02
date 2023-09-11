@@ -19,6 +19,7 @@ public:
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Zombie")
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* ZombieMeshComponent;
+	void OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor);
 
 protected:
 	// Called when the game starts or when spawned
@@ -28,4 +29,14 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	float DamageGenerates = 10.0f;
+	float Health = 100.0f;
+	float TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser);
+	float SpawnAfter = 0.0f;
+	float MovementSpeed = 0.01f;
+	void MoveToTarget(FVector TargetLocation);
+	bool bCanMove = false;
+	FORCEINLINE void SetSpawnAfter(float _SpawnAfter) { SpawnAfter = _SpawnAfter; }
+	FORCEINLINE float GetSpawnAfter() { return SpawnAfter; }
+	FORCEINLINE void SetCanMove(bool _bCanMove) { bCanMove = _bCanMove; }	
 };

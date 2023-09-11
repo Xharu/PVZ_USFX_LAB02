@@ -14,10 +14,19 @@ class APVZ_USFX_LAB02GameMode : public AGameModeBase
 public:
 	APVZ_USFX_LAB02GameMode();
 
+	TArray<class AZombie*> ArrayZombies;
+	TArray<class APlant*> ArrayPlants;
 
+	int32 NumberZombies = 10;
+	int32 NumberZombiesSpawned = 0;
+
+public:
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 protected:
 	virtual void BeginPlay() override;
-	void SpawnZombie(FVector _spawnPosition);
+	AZombie* SpawnZombie(FVector _spawnPosition);
+	APlant* SpawnPlant(FVector _spawnPosition);
 
 };
 

@@ -35,6 +35,7 @@
 /FUNCTIONPADMIN
 "C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\PVZ_USFX_LAB02Editor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
 "C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\ActorJerarquico.cpp.obj"
+"C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\CustomSceneComponent.cpp.obj"
 "C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\Plant.cpp.obj"
 "C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\PVZ_USFX_LAB02.cpp.obj"
 "C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\PVZ_USFX_LAB02GameMode.cpp.obj"
@@ -44,6 +45,7 @@
 "C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\RandomMovement.cpp.obj"
 "C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\Zombie.cpp.obj"
 "C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\ActorJerarquico.gen.cpp.obj"
+"C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\CustomSceneComponent.gen.cpp.obj"
 "C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\Plant.gen.cpp.obj"
 "C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\PVZ_USFX_LAB02.init.gen.cpp.obj"
 "C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Development\PVZ_USFX_LAB02\PVZ_USFX_LAB02GameMode.gen.cpp.obj"
