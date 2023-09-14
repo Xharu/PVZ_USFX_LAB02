@@ -17,3 +17,7 @@ C:\src_UE_ejemplos\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Zombie.h
 C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Zombie.generated.h
 C:\src_UE_ejemplos\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Plant.h
 C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Plant.generated.h
+C:\src_UE_ejemplos\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Potenciador.h
+C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Potenciador.generated.h
+C:\src_UE_ejemplos\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\MegaSol.h
+C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\MegaSol.generated.h

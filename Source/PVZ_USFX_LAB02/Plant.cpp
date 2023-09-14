@@ -18,14 +18,17 @@ APlant::APlant()
 
 	PlantMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PlantMesh"));
 	PlantMeshComponent->SetStaticMesh(PlantMesh.Object);
-
+	//PlantMeshComponent->SetCollisionProfileName(TEXT("Ignore"));
+	PlantMeshComponent->SetCollisionProfileName(UCollisionProfile::BlockAll_ProfileName);
+	PlantMeshComponent->SetSimulatePhysics(false);
+	//PlantMeshComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	RootComponent = PlantMeshComponent;
 
 	bCanFire = true;
 	GunOffset = FVector(90.f, 0.f, 0.f);
-	FireRate = 0.5f;
+	FireRate = 0.2f;
 	TiempoTranscurrido = 0.0f;
-	TiempoEntreDisparos = 3.0f;
+	TiempoEntreDisparos = 1.0f;
 }
 
 void APlant::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
@@ -100,7 +103,7 @@ void APlant::FireShot(FVector FireDirection)
 			//	UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
 			//}
 
-			bCanFire = false;
+			//bCanFire = false;
 		}
 	}
 }

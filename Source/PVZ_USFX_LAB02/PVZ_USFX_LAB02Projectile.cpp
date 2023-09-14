@@ -25,8 +25,8 @@ APVZ_USFX_LAB02Projectile::APVZ_USFX_LAB02Projectile()
 	// Use a ProjectileMovementComponent to govern this projectile's movement
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement0"));
 	ProjectileMovement->UpdatedComponent = ProjectileMesh;
-	ProjectileMovement->InitialSpeed = 50.0f;
-	ProjectileMovement->MaxSpeed = 50.0f;
+	ProjectileMovement->InitialSpeed = 250.0f;
+	ProjectileMovement->MaxSpeed = 250.0f;
 	ProjectileMovement->bRotationFollowsVelocity = true;
 	ProjectileMovement->bShouldBounce = false;
 	ProjectileMovement->ProjectileGravityScale = 0.f; // No gravity
@@ -47,7 +47,7 @@ void APVZ_USFX_LAB02Projectile::OnHit(UPrimitiveComponent* HitComp, AActor* Othe
 		//OtherComp->AddImpulseAtLocation(GetVelocity() * 200.0f, GetActorLocation());
 		if (OtherActor->ActorHasTag("Enemy"))
 		{
-			OtherComp->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+			//OtherComp->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 
 			OtherActor->TakeDamage(Damage, FDamageEvent(), nullptr, this);
 			//OtherComp->DestroyComponent();
@@ -57,7 +57,7 @@ void APVZ_USFX_LAB02Projectile::OnHit(UPrimitiveComponent* HitComp, AActor* Othe
 		{
 			// Realiza acciones normales para la colisión con otros actores
 			//OnHit(HitComp, OtherActor, OtherComp, NormalImpulse, Hit);
-			OtherComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			//OtherComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
 		}
 		

@@ -30,12 +30,14 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	float DamageGenerates = 10.0f;
-	float Health = 100.0f;
-	float TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser);
+	float Health = 10.0f;
 	float SpawnAfter = 0.0f;
 	float MovementSpeed = 0.01f;
-	void MoveToTarget(FVector TargetLocation);
 	bool bCanMove = false;
+
+	float TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser);
+	void MoveToTarget(FVector TargetLocation);
+
 	FORCEINLINE void SetSpawnAfter(float _SpawnAfter) { SpawnAfter = _SpawnAfter; }
 	FORCEINLINE float GetSpawnAfter() { return SpawnAfter; }
 	FORCEINLINE void SetCanMove(bool _bCanMove) { bCanMove = _bCanMove; }	

@@ -16,15 +16,18 @@ AZombie::AZombie()
 	//OnActorBeginOverlap.AddDynamic(this, &AZombie::OnOverlapBegin);
 
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ZombieMesh(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Cone.Shape_Cone'"));
-
+	//static ConstructorHelpers::FObjectFinder<UStaticMesh> ZombieMesh(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Cube.Shape_Cube'"));
+	
 	ZombieMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ZombieMesh"));
 	ZombieMeshComponent->SetStaticMesh(ZombieMesh.Object);
-
+	ZombieMeshComponent->SetCollisionProfileName(UCollisionProfile::BlockAllDynamic_ProfileName);
+	ZombieMeshComponent->SetSimulatePhysics(true);
+	//ZombieMeshComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	RootComponent = ZombieMeshComponent;
 
 	Tags.Add(TEXT("Enemy"));
-	Health = 1000.0f;
-	MovementSpeed = 0.01f;
+	Health = 100.0f;
+	MovementSpeed = 0.02f;
 	bCanMove = false;
 }
 
@@ -78,7 +81,7 @@ float AZombie::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, A
 	Health -= DamageAmount;
 
 	// Devuelve la cantidad de daño que se aplicó realmente.
-	return DamageAmount;
+	return Health;
 }
 
 void AZombie::MoveToTarget(FVector TargetLocation)
