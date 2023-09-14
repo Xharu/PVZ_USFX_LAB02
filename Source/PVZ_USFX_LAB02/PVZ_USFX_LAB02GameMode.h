@@ -20,7 +20,8 @@ public:
 	TArray<class APlant*> ArrayPlants;
 	//TMap<APotenciador*, int32> MapPotenciadores;
 	TMap<FString, uint32> MapPotenciadores;
-	
+	TMap<FString, uint32> MapTarjetasPlantas;
+
 	int32 NumberZombies = 5;
 	int32 NumberZombiesSpawned = 0;
 
@@ -32,16 +33,25 @@ protected:
 	AZombie* SpawnZombie(FVector _spawnPosition);
 	APlant* SpawnPlant(FVector _spawnPosition);
 
-	FTimer Temporizador;
 	float TiempoTranscurrido = 0.0f;
 	float TiempoTranscurridoSiguientePala = 0.0f;
 	float TiempoTranscurridoSiguienteAbono = 0.0f;
 
+	float TiempoTrancurridoSiguienteTarjetaLanzaguisantes = 0.0f;
+	float TiempoTrancurridoSiguienteTarjetaGirasol = 0.0f;
+	float TiempoTrancurridoSiguienteTarjetaNuez = 0.0f;
+	float TiempoTrancurridoSiguienteTarjetaLanzamaiz = 0.0f;
+
+
+	FTimerHandle TimerHandleTarjetasPlantaNuez;
 	FTimerHandle TimerHandlePotenciadoresAgua;
 	float IncrementarAguaCada = 20.0f;
 
 	void TimerCallBackPotenciadoresAgua();
+	void TimerCallBackTarjetasPlantaNuez();
 	void VisualizarPotenciadores();
+	void VisualizarTarjetasPlantas();
+
 };
 
 

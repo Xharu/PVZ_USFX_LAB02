@@ -6,6 +6,7 @@
 #include "Plant.h"
 #include "Potenciador.h"
 #include "MegaSol.h"
+#include "TimerManager.h"
 
 APVZ_USFX_LAB02GameMode::APVZ_USFX_LAB02GameMode()
 {
@@ -19,6 +20,24 @@ APVZ_USFX_LAB02GameMode::APVZ_USFX_LAB02GameMode()
 	MapPotenciadores.Add(TEXT("Pala"), 0);
 
 	//GetWorldTimerManager().SetTimer(TimerHandlePotenciadoresAgua, this, &APVZ_USFX_LAB02GameMode::TimerCallBackPotenciadoresAgua, IncrementarAguaCada, false);
+	// En una función de tu clase que hereda de AActor o UObject
+	//GetWorldTimerManager().SetTimer(TimerHandleTarjetasPlantaNuez, this, &APVZ_USFX_LAB02GameMode::TimerCallBackTarjetasPlantaNuez, 15.0f, false);
+
+	MapTarjetasPlantas.Add(TEXT("Lanzaguisantes"), 0);
+	MapTarjetasPlantas.Add(TEXT("Girasol"), 10);
+	MapTarjetasPlantas.Add(TEXT("Nuez"), 10);
+	MapTarjetasPlantas.Add(TEXT("Papa"), 0);
+	MapTarjetasPlantas.Add(TEXT("Hongo"), 1);
+	MapTarjetasPlantas.Add(TEXT("Repetidora"), 10);
+	MapTarjetasPlantas.Add(TEXT("PlantaCarnivora"), 10);
+	MapTarjetasPlantas.Add(TEXT("Lanzamaiz"), 10);
+	MapTarjetasPlantas.Add(TEXT("Patatapulta"), 10);
+
+	TPair<FString, uint32> TarjetaPlanta;
+	TarjetaPlanta.Key = TEXT("LanzaChiles");
+	TarjetaPlanta.Value = 5;
+
+	MapTarjetasPlantas.Add(TarjetaPlanta);
 
 }
 
@@ -73,11 +92,37 @@ void APVZ_USFX_LAB02GameMode::BeginPlay()
 	MapPotenciadores.Add(TEXT("AbonoMagico"), 3);
 	MapPotenciadores.Add(TEXT("Regadera"), 0);
 	MapPotenciadores.Add(TEXT("Pala"), 5);
+
+	UWorld* const World = GetWorld();
+	if (World != nullptr)
+	{
+		// spawn the projectile
+		World->GetTimerManager().SetTimer(TimerHandleTarjetasPlantaNuez, this, &APVZ_USFX_LAB02GameMode::TimerCallBackTarjetasPlantaNuez, 15.0f);
+
+	}
+
 }
 
 void APVZ_USFX_LAB02GameMode::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	VisualizarTarjetasPlantas();
+
+	if (TiempoTrancurridoSiguienteTarjetaLanzaguisantes > 5.0f)
+	{
+		MapTarjetasPlantas["Lanzaguisantes"] += 1;
+		TiempoTrancurridoSiguienteTarjetaLanzaguisantes = 0.0f;
+	}
+
+	if (TiempoTrancurridoSiguienteTarjetaGirasol > 10.0f)
+	{
+		MapTarjetasPlantas["Girasol"] += 1;
+		TiempoTrancurridoSiguienteTarjetaGirasol = 0.0f;
+	}
+
+	TiempoTrancurridoSiguienteTarjetaLanzaguisantes += DeltaTime;
+	TiempoTrancurridoSiguienteTarjetaGirasol += DeltaTime;
 
 	TiempoTranscurrido += DeltaTime;
 	TiempoTranscurridoSiguientePala += DeltaTime;
@@ -87,7 +132,7 @@ void APVZ_USFX_LAB02GameMode::Tick(float DeltaTime)
 	{
 		MapPotenciadores[TEXT("Abono")] += 1;
 		TiempoTranscurridoSiguienteAbono = 0.0f;
-		VisualizarPotenciadores();
+		//VisualizarPotenciadores();
 	}
 
 
@@ -95,7 +140,7 @@ void APVZ_USFX_LAB02GameMode::Tick(float DeltaTime)
 	{
 		MapPotenciadores[TEXT("Pala")] += 1;
 		TiempoTranscurridoSiguientePala = 0.0f;
-		VisualizarPotenciadores();
+		//VisualizarPotenciadores();
 	}
 
 //	if (ArrayZombies.Num() > 0) {
@@ -148,6 +193,18 @@ void APVZ_USFX_LAB02GameMode::VisualizarPotenciadores() {
 	}
 }
 
+void APVZ_USFX_LAB02GameMode::VisualizarTarjetasPlantas() {
+	for (TPair<FString, uint32> TarjetaActual : MapTarjetasPlantas)
+	{
+		FString Llave = TarjetaActual.Key;
+		int32 Valor = TarjetaActual.Value;
+		UE_LOG(LogTemp, Warning, TEXT("Llave: %s, Valor: %d"), *Llave, Valor);
+
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Planta: %s, tiempo recarga: %d"), *Llave, Valor));
+	}
+}
+
+
 AZombie* APVZ_USFX_LAB02GameMode::SpawnZombie(FVector _spawnPosition)
 {
 	FTransform SpawnLocation;
@@ -165,4 +222,9 @@ APlant* APVZ_USFX_LAB02GameMode::SpawnPlant(FVector _spawnPosition)
 void APVZ_USFX_LAB02GameMode::TimerCallBackPotenciadoresAgua()
 {
 	MapPotenciadores[TEXT("Agua")] += 1;
+}
+
+void APVZ_USFX_LAB02GameMode::TimerCallBackTarjetasPlantaNuez()
+{
+	MapTarjetasPlantas[TEXT("Nuez")] += 1;
 }
