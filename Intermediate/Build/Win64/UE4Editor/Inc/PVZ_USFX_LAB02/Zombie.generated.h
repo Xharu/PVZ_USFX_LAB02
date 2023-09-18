@@ -8,20 +8,34 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UPrimitiveComponent;
+class AActor;
+struct FVector;
+struct FHitResult;
 #ifdef PVZ_USFX_LAB02_Zombie_generated_h
 #error "Zombie.generated.h already included, missing '#pragma once' in Zombie.h"
 #endif
 #define PVZ_USFX_LAB02_Zombie_generated_h
 
 #define PVZ_USFX_LAB02_Source_PVZ_USFX_LAB02_Zombie_h_12_SPARSE_DATA
-#define PVZ_USFX_LAB02_Source_PVZ_USFX_LAB02_Zombie_h_12_RPC_WRAPPERS
-#define PVZ_USFX_LAB02_Source_PVZ_USFX_LAB02_Zombie_h_12_RPC_WRAPPERS_NO_PURE_DECLS
+#define PVZ_USFX_LAB02_Source_PVZ_USFX_LAB02_Zombie_h_12_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execOnHit); \
+	DECLARE_FUNCTION(execOnOverlapBeginFunction);
+
+
+#define PVZ_USFX_LAB02_Source_PVZ_USFX_LAB02_Zombie_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execOnHit); \
+	DECLARE_FUNCTION(execOnOverlapBeginFunction);
+
+
 #define PVZ_USFX_LAB02_Source_PVZ_USFX_LAB02_Zombie_h_12_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAZombie(); \
 	friend struct Z_Construct_UClass_AZombie_Statics; \
 public: \
-	DECLARE_CLASS(AZombie, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/PVZ_USFX_LAB02"), NO_API) \
+	DECLARE_CLASS(AZombie, AActor, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/PVZ_USFX_LAB02"), NO_API) \
 	DECLARE_SERIALIZER(AZombie)
 
 
@@ -30,14 +44,14 @@ private: \
 	static void StaticRegisterNativesAZombie(); \
 	friend struct Z_Construct_UClass_AZombie_Statics; \
 public: \
-	DECLARE_CLASS(AZombie, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/PVZ_USFX_LAB02"), NO_API) \
+	DECLARE_CLASS(AZombie, AActor, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/PVZ_USFX_LAB02"), NO_API) \
 	DECLARE_SERIALIZER(AZombie)
 
 
 #define PVZ_USFX_LAB02_Source_PVZ_USFX_LAB02_Zombie_h_12_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AZombie(const FObjectInitializer& ObjectInitializer); \
-	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AZombie) \
+	DEFINE_ABSTRACT_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AZombie) \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, AZombie); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AZombie); \
 private: \
@@ -55,7 +69,7 @@ private: \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, AZombie); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AZombie); \
-	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AZombie)
+	DEFINE_ABSTRACT_DEFAULT_CONSTRUCTOR_CALL(AZombie)
 
 
 #define PVZ_USFX_LAB02_Source_PVZ_USFX_LAB02_Zombie_h_12_PRIVATE_PROPERTY_OFFSET

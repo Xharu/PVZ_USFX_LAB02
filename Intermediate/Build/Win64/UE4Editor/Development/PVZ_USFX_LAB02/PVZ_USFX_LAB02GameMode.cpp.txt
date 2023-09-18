@@ -21,3 +21,11 @@ C:\src_UE_ejemplos\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Potenciador.h
 C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Potenciador.generated.h
 C:\src_UE_ejemplos\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\MegaSol.h
 C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\MegaSol.generated.h
+C:\src_UE_ejemplos\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\ZombieComun.h
+C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\ZombieComun.generated.h
+C:\src_UE_ejemplos\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\ZombieCono.h
+C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\ZombieCono.generated.h
+C:\src_UE_ejemplos\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\ZombieCubo.h
+C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\ZombieCubo.generated.h
+C:\src_UE_ejemplos\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\ZombieSenal.h
+C:\src_UE_ejemplos\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\ZombieSenal.generated.h

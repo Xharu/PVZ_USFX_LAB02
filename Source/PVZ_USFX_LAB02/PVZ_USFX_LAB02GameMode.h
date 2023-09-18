@@ -22,7 +22,13 @@ public:
 	TMap<FString, uint32> MapPotenciadores;
 	TMap<FString, uint32> MapTarjetasPlantas;
 
-	int32 NumberZombies = 5;
+	int32 NumberZombiesOrda = 20;
+	int32 NumberZombiesComun = 10;
+	int32 NumberZombiesCono = 5;
+	int32 NumberZombiesCubo = 2;
+	int32 NumberZombiesSenal = 3;
+
+	TMap<FName, int32> mOrdaZombies;
 	int32 NumberZombiesSpawned = 0;
 
 public:
@@ -30,8 +36,13 @@ public:
 	virtual void Tick(float DeltaTime) override;
 protected:
 	virtual void BeginPlay() override;
-	AZombie* SpawnZombie(FVector _spawnPosition);
-	APlant* SpawnPlant(FVector _spawnPosition);
+	
+	class AZombieComun* SpawnZombieComun(FVector _spawnPosition);
+	class AZombieCono* SpawnZombieCono(FVector _spawnPosition);
+	class AZombieCubo* SpawnZombieCubo(FVector _spawnPosition);
+	class AZombieSenal* SpawnZombieSenal(FVector _spawnPosition);
+
+	class APlant* SpawnPlant(FVector _spawnPosition);
 
 	float TiempoTranscurrido = 0.0f;
 	float TiempoTranscurridoSiguientePala = 0.0f;

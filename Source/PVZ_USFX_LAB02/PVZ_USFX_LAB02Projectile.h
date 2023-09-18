@@ -38,7 +38,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	float Damage = 10.0f;
+	float DamageGenerates = 10.0f;
 	float MaxDistance = 400.0f;
 };
 

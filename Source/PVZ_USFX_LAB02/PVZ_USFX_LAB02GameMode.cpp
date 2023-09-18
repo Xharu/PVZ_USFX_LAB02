@@ -7,6 +7,10 @@
 #include "Potenciador.h"
 #include "MegaSol.h"
 #include "TimerManager.h"
+#include "ZombieComun.h"
+#include "ZombieCono.h"
+#include "ZombieCubo.h"
+#include "ZombieSenal.h"
 
 APVZ_USFX_LAB02GameMode::APVZ_USFX_LAB02GameMode()
 {
@@ -51,19 +55,72 @@ void APVZ_USFX_LAB02GameMode::BeginPlay()
 	float initialPositionX = -1500.0f;
 	float initialPositionY = 1200.0f;
 
-	for (int32 i = 0; i < NumberZombies; ++i)
+	for (int32 i = 0; i < NumberZombiesComun; ++i)
 	{
-		AZombie* NewZombie = SpawnZombie(FVector(initialPositionX + i * 150.0f, initialPositionY, 200.0f));
+		AZombieComun* NewZombieComun = SpawnZombieComun(FVector(initialPositionX + i * 150.0f, initialPositionY, 200.0f));
 
-		if (NewZombie)
+		if (NewZombieComun)
 		{
-			NewZombie->SetSpawnAfter(FMath::RandRange(1, 25));
-			NewZombie->SetActorHiddenInGame(true);
-			//NewZombie->SetActorEnableCollision(true);     // Habilita las colisiones si es necesario
-			NewZombie->SetCanMove(false);
-			ArrayZombies.Add(NewZombie);
+			NewZombieComun->SetSpawnAfter(FMath::RandRange(1, 10));
+			NewZombieComun->SetActorHiddenInGame(true);
+			NewZombieComun->SetActorEnableCollision(true);     // Habilita las colisiones si es necesario
+			NewZombieComun->SetCanMove(false);
+			ArrayZombies.Add(NewZombieComun);
 		}
 	}
+
+	initialPositionX = -1500.0f;
+	initialPositionY = 1200.0f;
+
+	for (int32 i = 0; i < NumberZombiesCono; ++i)
+	{
+		AZombieCono* NewZombieCono = SpawnZombieCono(FVector(initialPositionX + i * 150.0f, initialPositionY, 200.0f));
+
+		if (NewZombieCono)
+		{
+			NewZombieCono->SetSpawnAfter(FMath::RandRange(1, 10));
+			NewZombieCono->SetActorHiddenInGame(true);
+			NewZombieCono->SetActorEnableCollision(true);     // Habilita las colisiones si es necesario
+			NewZombieCono->SetCanMove(false);
+			ArrayZombies.Add(NewZombieCono);
+		}
+	}
+
+	initialPositionX = -1500.0f;
+	initialPositionY = 1200.0f;
+
+	for (int32 i = 0; i < NumberZombiesCubo; ++i)
+	{
+		AZombieCubo* NewZombieCubo = SpawnZombieCubo(FVector(initialPositionX + i * 150.0f, initialPositionY, 200.0f));
+
+		if (NewZombieCubo)
+		{
+			NewZombieCubo->SetSpawnAfter(FMath::RandRange(1, 10));
+			NewZombieCubo->SetActorHiddenInGame(true);
+			NewZombieCubo->SetActorEnableCollision(true);     // Habilita las colisiones si es necesario
+			NewZombieCubo->SetCanMove(false);
+			ArrayZombies.Add(NewZombieCubo);
+		}
+	}
+
+	initialPositionX = -1500.0f;
+	initialPositionY = 1200.0f;
+
+	for (int32 i = 0; i < NumberZombiesSenal; ++i)
+	{
+		AZombieSenal* NewZombieSenal = SpawnZombieSenal(FVector(initialPositionX + i * 150.0f, initialPositionY, 200.0f));
+
+		if (NewZombieSenal)
+		{
+			NewZombieSenal->SetSpawnAfter(FMath::RandRange(1, 10));
+			NewZombieSenal->SetActorHiddenInGame(true);
+			NewZombieSenal->SetActorEnableCollision(true);     // Habilita las colisiones si es necesario
+			NewZombieSenal->SetCanMove(false);
+			ArrayZombies.Add(NewZombieSenal);
+		}
+	}
+
+
 
 
 	initialPositionX = -1500.0f;
@@ -107,7 +164,7 @@ void APVZ_USFX_LAB02GameMode::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	VisualizarTarjetasPlantas();
+	//VisualizarTarjetasPlantas();
 
 	if (TiempoTrancurridoSiguienteTarjetaLanzaguisantes > 5.0f)
 	{
@@ -153,7 +210,7 @@ void APVZ_USFX_LAB02GameMode::Tick(float DeltaTime)
 			{
 				ActualZombie->SetActorScale3D(FVector(1.0f, 1.0f, 1.0f));      // Establece la escala de spawn deseada
 				ActualZombie->SetActorHiddenInGame(false);      // Haz que el actor sea visible
-				//ActualZombie->SetActorEnableCollision(true);     // Habilita las colisiones si es necesario
+				ActualZombie->SetActorEnableCollision(true);     // Habilita las colisiones si es necesario
 				ActualZombie->SetCanMove(true);     // Habilita las colisiones si es necesario
 				NumberZombiesSpawned += 1;
 
@@ -164,7 +221,7 @@ void APVZ_USFX_LAB02GameMode::Tick(float DeltaTime)
 				{
 					FString Llave = ElementoActual.Key;
 					int32 Valor = ElementoActual.Value;
-					UE_LOG(LogTemp, Warning, TEXT("Llave: %s, Valor: %d"), *Llave, Valor);
+					//UE_LOG(LogTemp, Warning, TEXT("Llave: %s, Valor: %d"), *Llave, Valor);
 
 					//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Elemento: %s, Cantidad: %d"), *ElementoActual.Key, ElementoActual.Value));
 				}
@@ -205,11 +262,39 @@ void APVZ_USFX_LAB02GameMode::VisualizarTarjetasPlantas() {
 }
 
 
-AZombie* APVZ_USFX_LAB02GameMode::SpawnZombie(FVector _spawnPosition)
+//AZombie* APVZ_USFX_LAB02GameMode::SpawnZombie(FVector _spawnPosition)
+//{
+//	FTransform SpawnLocation;
+//	SpawnLocation.SetLocation(_spawnPosition);
+//	return GetWorld()->SpawnActor<AZombie>(AZombie::StaticClass(), SpawnLocation);
+//}
+
+AZombieComun* APVZ_USFX_LAB02GameMode::SpawnZombieComun(FVector _spawnPosition)
 {
 	FTransform SpawnLocation;
 	SpawnLocation.SetLocation(_spawnPosition);
-	return GetWorld()->SpawnActor<AZombie>(AZombie::StaticClass(), SpawnLocation);
+	return GetWorld()->SpawnActor<AZombieComun>(AZombieComun::StaticClass(), SpawnLocation);
+}
+
+AZombieCono* APVZ_USFX_LAB02GameMode::SpawnZombieCono(FVector _spawnPosition)
+{
+	FTransform SpawnLocation;
+	SpawnLocation.SetLocation(_spawnPosition);
+	return GetWorld()->SpawnActor<AZombieCono>(AZombieCono::StaticClass(), SpawnLocation);
+}
+
+AZombieCubo* APVZ_USFX_LAB02GameMode::SpawnZombieCubo(FVector _spawnPosition)
+{
+	FTransform SpawnLocation;
+	SpawnLocation.SetLocation(_spawnPosition);
+	return GetWorld()->SpawnActor<AZombieCubo>(AZombieCubo::StaticClass(), SpawnLocation);
+}
+
+AZombieSenal* APVZ_USFX_LAB02GameMode::SpawnZombieSenal(FVector _spawnPosition)
+{
+	FTransform SpawnLocation;
+	SpawnLocation.SetLocation(_spawnPosition);
+	return GetWorld()->SpawnActor<AZombieSenal>(AZombieSenal::StaticClass(), SpawnLocation);
 }
 
 APlant* APVZ_USFX_LAB02GameMode::SpawnPlant(FVector _spawnPosition)

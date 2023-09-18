@@ -35,7 +35,7 @@ APVZ_USFX_LAB02Projectile::APVZ_USFX_LAB02Projectile()
 	MaxDistance = 1000.0f;
 	//InitialLifeSpan = 10.0f;
 	InitialLifeSpan = MaxDistance / ProjectileMovement->InitialSpeed;
-	Damage = 10.0f;
+	DamageGenerates = 10.0f;
 }
 
 void APVZ_USFX_LAB02Projectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
@@ -49,7 +49,7 @@ void APVZ_USFX_LAB02Projectile::OnHit(UPrimitiveComponent* HitComp, AActor* Othe
 		{
 			//OtherComp->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 
-			OtherActor->TakeDamage(Damage, FDamageEvent(), nullptr, this);
+			OtherActor->TakeDamage(DamageGenerates, FDamageEvent(), nullptr, this);
 			//OtherComp->DestroyComponent();
 			//OtherActor->Destroy();
 		}
@@ -63,7 +63,7 @@ void APVZ_USFX_LAB02Projectile::OnHit(UPrimitiveComponent* HitComp, AActor* Othe
 		
 	}
 
-	Destroy();
+	this->Destroy();
 }
 
 void APVZ_USFX_LAB02Projectile::Tick(float DeltaTime)

@@ -19,34 +19,77 @@ AZombie::AZombie()
 	//static ConstructorHelpers::FObjectFinder<UStaticMesh> ZombieMesh(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Cube.Shape_Cube'"));
 	
 	ZombieMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ZombieMesh"));
-	ZombieMeshComponent->SetStaticMesh(ZombieMesh.Object);
-	ZombieMeshComponent->SetCollisionProfileName(UCollisionProfile::BlockAllDynamic_ProfileName);
+	//ZombieMeshComponent->SetStaticMesh(ZombieMesh.Object);
+	ZombieMeshComponent->SetCollisionProfileName(UCollisionProfile::BlockAll_ProfileName);
 	ZombieMeshComponent->SetSimulatePhysics(true);
-	//ZombieMeshComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	ZombieMeshComponent->OnComponentBeginOverlap.AddDynamic(this, &AZombie::OnOverlapBeginFunction);		// set up a notification for when this component hits something
+	
 	RootComponent = ZombieMeshComponent;
 
+	// Asignar la función de evento a OnOverlapBegin del componente de colisión
+
+	//ZombieMeshComponent->OnComponentHit.AddDynamic(this, &AZombie::OnHit);		// set up a notification for when this component hits something
+	ZombieMeshComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+
 	Tags.Add(TEXT("Enemy"));
-	Health = 100.0f;
-	MovementSpeed = 0.02f;
+	DamageGenerates = 10.0f;
+	Health = 1000.0f;
+	MovementSpeed = 0.1f;
 	bCanMove = false;
 }
 
-void AZombie::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
+void AZombie::OnOverlapBeginFunction(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("Estamos aqui")));
 
-	// Verifica si el otro actor es un zombie
-	APlant* ActualPlant = Cast<APlant>(OtherActor);
-
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Plant energy: %f"), ActualPlant->Health));
-
-	if (ActualPlant)
+	if ((OverlappedComponent != nullptr) && (OtherActor != this))
 	{
-		ActualPlant->TakeDamage(DamageGenerates, FDamageEvent(), nullptr, this);
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("Estamos aqui")));
 
-		// Reduce la energía de la planta cuando un zombie está cerca
-		// Puedes implementar tu propia lógica para reducir la energía aquí
-		// Por ejemplo, disminuir una variable que represente la energía de la planta
-		// También puedes programar el tiempo entre las reducciones de energía
+		//OtherComp->AddImpulseAtLocation(GetVelocity() * 200.0f, GetActorLocation());
+		if (OtherActor->ActorHasTag("Plant"))
+		{
+			//OtherComp->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+
+			OtherActor->TakeDamage(DamageGenerates, FDamageEvent(), nullptr, this);
+			//OtherComp->DestroyComponent();
+			//OtherActor->Destroy();
+		}
+		else
+		{
+			// Realiza acciones normales para la colisión con otros actores
+			//OnHit(HitComp, OtherActor, OtherComp, NormalImpulse, Hit);
+			//OtherComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+		}
+	}
+}
+
+void AZombie::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+{
+	// Only add impulse and destroy projectile if we hit a physics
+	//if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr) && OtherComp->IsSimulatingPhysics())
+	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("Estamos aqui")));
+
+		//OtherComp->AddImpulseAtLocation(GetVelocity() * 200.0f, GetActorLocation());
+		if (OtherActor->ActorHasTag("Plant"))
+		{
+			//OtherComp->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+
+			OtherActor->TakeDamage(DamageGenerates, FDamageEvent(), nullptr, this);
+			//OtherComp->DestroyComponent();
+			//OtherActor->Destroy();
+		}
+		else
+		{
+			// Realiza acciones normales para la colisión con otros actores
+			//OnHit(HitComp, OtherActor, OtherComp, NormalImpulse, Hit);
+			//OtherComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+		}
+
 	}
 }
 
@@ -64,10 +107,10 @@ void AZombie::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (Health <= 0)
+	/*if (Health <= 0.0f)
 	{
 		Destroy();
-	}
+	}*/
 
 	if (bCanMove && !this->IsHidden())
 	{
@@ -75,11 +118,13 @@ void AZombie::Tick(float DeltaTime)
 	}
 }
 
-float AZombie::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+float AZombie::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	// Aquí puedes manejar el daño como desees, por ejemplo, actualizando la salud del actor.
-	Health -= DamageAmount;
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Health Zombie: %f"), this->Health));
 
+	Health -= Damage;
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Health Zombie: %f"), this->Health));
 	// Devuelve la cantidad de daño que se aplicó realmente.
 	return Health;
 }
