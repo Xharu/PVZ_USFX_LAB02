@@ -2,12 +2,12 @@
 	"Targets": [
 		{
 			"Name": "PVZ_USFX_LAB02",
-			"Path": "C:\\src_UE_ejemplos\\PVZ_USFX_LAB02\\Source\\PVZ_USFX_LAB02.Target.cs",
+			"Path": "E:\\repositorios\\PVZ_USFX_LAB02\\Source\\PVZ_USFX_LAB02.Target.cs",
 			"Type": "Game"
 		},
 		{
 			"Name": "PVZ_USFX_LAB02Editor",
-			"Path": "C:\\src_UE_ejemplos\\PVZ_USFX_LAB02\\Source\\PVZ_USFX_LAB02Editor.Target.cs",
+			"Path": "E:\\repositorios\\PVZ_USFX_LAB02\\Source\\PVZ_USFX_LAB02Editor.Target.cs",
 			"Type": "Editor"
 		}
 	]

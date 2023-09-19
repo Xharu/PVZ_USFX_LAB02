@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"C:\\src_UE_ejemplos\\PVZ_USFX_LAB02\\Source\\PVZ_USFX_LAB02\\PVZ_USFX_LAB02.Build.cs",
-		"C:\\src_UE_ejemplos\\PVZ_USFX_LAB02\\Source\\PVZ_USFX_LAB02.Target.cs",
-		"C:\\src_UE_ejemplos\\PVZ_USFX_LAB02\\Source\\PVZ_USFX_LAB02Editor.Target.cs"
+		"E:\\repositorios\\PVZ_USFX_LAB02\\Source\\PVZ_USFX_LAB02\\PVZ_USFX_LAB02.Build.cs",
+		"E:\\repositorios\\PVZ_USFX_LAB02\\Source\\PVZ_USFX_LAB02.Target.cs",
+		"E:\\repositorios\\PVZ_USFX_LAB02\\Source\\PVZ_USFX_LAB02Editor.Target.cs"
 	],
 	"EngineVersion": "4.27.2"
 }

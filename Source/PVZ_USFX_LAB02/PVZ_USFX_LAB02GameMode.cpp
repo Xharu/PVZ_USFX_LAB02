@@ -142,7 +142,27 @@ void APVZ_USFX_LAB02GameMode::BeginPlay()
 			APlant* NewLanzaguizantes = SpawnPlant(FVector(initialPositionX + i * 150.0f, initialPositionY + j * 350.0f, 200.0f));
 			aPlantas.Add(NewLanzaguizantes);
 		}
+
+
 	} 
+	initialPositionX = -1575.0f;
+	initialPositionY = 150.0f;
+	for (int i = 0; i < 5; i++)
+	{
+		ANuez* NewNuez = SpawnPlantNuez(FVector(initialPositionX + i * 155.0f, initialPositionY, 210.0f));
+
+		if (NewNuez)
+		{
+			NewNuez->SetActorEnableCollision(true);     // Habilita las colisiones si es necesario
+			aPlantas.Add(NewNuez);
+		}
+
+
+		for (int j = 0; j < 2; j++) {
+			APlant* NewNuez = SpawnPlant(FVector(initialPositionX + i * 155.0f, initialPositionY + j * 350.0f, 210.0f));
+			aPlantas.Add(NewNuez);
+		}
+	}
 
 	//initialPositionX = -1500.0f;
 	//initialPositionY = 1000.0f;
@@ -320,6 +340,14 @@ ALanzaguisantes* APVZ_USFX_LAB02GameMode::SpawnPlantLanzaguisantes(FVector _spaw
 	FTransform SpawnLocation;
 	SpawnLocation.SetLocation(_spawnPosition);
 	return GetWorld()->SpawnActor<ALanzaguisantes>(ALanzaguisantes::StaticClass(), SpawnLocation);
+
+}
+
+ANuez* APVZ_USFX_LAB02GameMode::SpawnPlantNuez(FVector _spawnPosition)
+{
+	FTransform SpawnLocation;
+	SpawnLocation.SetLocation(_spawnPosition);
+	return GetWorld()->SpawnActor<ANuez>(ANuez::StaticClass(), SpawnLocation);
 
 }
 

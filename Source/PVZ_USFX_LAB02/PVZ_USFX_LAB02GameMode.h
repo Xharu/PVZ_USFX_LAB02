@@ -45,6 +45,7 @@ protected:
 	class APlant* SpawnPlant(FVector _spawnPosition);
 
 	class ALanzaguisantes* SpawnPlantLanzaguisantes(FVector _spawnPosition);
+	class ANuez* SpawnPlantNuez(FVector _spawnPosition);
 
 
 	float TiempoTranscurrido = 0.0f;
