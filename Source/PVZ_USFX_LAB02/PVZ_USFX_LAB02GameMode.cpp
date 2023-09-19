@@ -11,6 +11,11 @@
 #include "ZombieCono.h"
 #include "ZombieCubo.h"
 #include "ZombieSenal.h"
+#include "Lanzaguisantes.h"
+#include "Repetidora.h"
+#include "Girasol.h"
+#include "Nuez.h"
+#include "Hongo.h"
 
 APVZ_USFX_LAB02GameMode::APVZ_USFX_LAB02GameMode()
 {
@@ -120,17 +125,22 @@ void APVZ_USFX_LAB02GameMode::BeginPlay()
 		}
 	}
 
-
-
-
 	initialPositionX = -1500.0f;
 	initialPositionY = 100.0f;
 	for (int i = 0; i < 5; i++)
 	{
+		ALanzaguisantes* NewLanzaguisantes = SpawnPlantLanzaguisantes(FVector(initialPositionX + i * 150.0f, initialPositionY, 200.0f));
+
+		if (NewLanzaguisantes)
+		{
+			NewLanzaguisantes->SetActorEnableCollision(true);     // Habilita las colisiones si es necesario
+			aPlantas.Add(NewLanzaguisantes);
+		}
+
+
 		for (int j = 0; j < 2; j++) {
-			APlant* NewPlant = SpawnPlant(FVector(initialPositionX + i * 150.0f, initialPositionY + j * 350.0f, 200.0f));
-			//NewPlant->SetActorEnableCollision(true);
-			ArrayPlants.Add(NewPlant);
+			APlant* NewLanzaguizantes = SpawnPlant(FVector(initialPositionX + i * 150.0f, initialPositionY + j * 350.0f, 200.0f));
+			aPlantas.Add(NewLanzaguizantes);
 		}
 	} 
 
@@ -302,6 +312,15 @@ APlant* APVZ_USFX_LAB02GameMode::SpawnPlant(FVector _spawnPosition)
 	FTransform SpawnLocation;
 	SpawnLocation.SetLocation(_spawnPosition);
 	return GetWorld()->SpawnActor<APlant>(APlant::StaticClass(), SpawnLocation);
+}
+
+
+ALanzaguisantes* APVZ_USFX_LAB02GameMode::SpawnPlantLanzaguisantes(FVector _spawnPosition)
+{
+	FTransform SpawnLocation;
+	SpawnLocation.SetLocation(_spawnPosition);
+	return GetWorld()->SpawnActor<ALanzaguisantes>(ALanzaguisantes::StaticClass(), SpawnLocation);
+
 }
 
 void APVZ_USFX_LAB02GameMode::TimerCallBackPotenciadoresAgua()

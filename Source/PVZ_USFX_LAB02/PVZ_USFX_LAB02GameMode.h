@@ -44,6 +44,9 @@ protected:
 
 	class APlant* SpawnPlant(FVector _spawnPosition);
 
+	class ALanzaguisantes* SpawnPlantLanzaguisantes(FVector _spawnPosition);
+
+
 	float TiempoTranscurrido = 0.0f;
 	float TiempoTranscurridoSiguientePala = 0.0f;
 	float TiempoTranscurridoSiguienteAbono = 0.0f;
