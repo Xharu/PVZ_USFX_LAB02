@@ -8,7 +8,7 @@
 
 class UStaticMeshComponent;
 
-UCLASS()
+UCLASS(Abstract)
 class PVZ_USFX_LAB02_API APlant : public AActor
 {
 	GENERATED_BODY()
@@ -42,6 +42,8 @@ public:
 	float TiempoEntreDisparos;
 	float TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser);
 	float Health = 20.0f;
+
+	void Defender() PURE_VIRTUAL(APlant::Defender, );
 
 private:
 	/* Flag to control firing  */

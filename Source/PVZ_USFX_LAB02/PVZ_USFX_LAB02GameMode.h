@@ -30,7 +30,7 @@ public:
 
 	TMap<FName, int32> mOrdaZombies;
 	int32 NumberZombiesSpawned = 0;
-
+	TArray<APlant*> aPlantas;
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

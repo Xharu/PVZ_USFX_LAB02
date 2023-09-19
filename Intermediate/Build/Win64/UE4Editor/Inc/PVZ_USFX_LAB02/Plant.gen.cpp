@@ -105,7 +105,7 @@ void EmptyLinkFunctionForGeneratedCodePlant() {}
 		0,
 		UE_ARRAY_COUNT(Z_Construct_UClass_APlant_Statics::PropPointers),
 		0,
-		0x009000A4u,
+		0x009000A5u,
 		METADATA_PARAMS(Z_Construct_UClass_APlant_Statics::Class_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UClass_APlant_Statics::Class_MetaDataParams))
 	};
 	UClass* Z_Construct_UClass_APlant()
@@ -117,7 +117,7 @@ void EmptyLinkFunctionForGeneratedCodePlant() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APlant, 3595434319);
+	IMPLEMENT_CLASS(APlant, 2082242078);
 	template<> PVZ_USFX_LAB02_API UClass* StaticClass<APlant>()
 	{
 		return APlant::StaticClass();

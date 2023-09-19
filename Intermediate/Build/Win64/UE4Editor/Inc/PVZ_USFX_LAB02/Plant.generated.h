@@ -21,7 +21,7 @@ private: \
 	static void StaticRegisterNativesAPlant(); \
 	friend struct Z_Construct_UClass_APlant_Statics; \
 public: \
-	DECLARE_CLASS(APlant, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/PVZ_USFX_LAB02"), NO_API) \
+	DECLARE_CLASS(APlant, AActor, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/PVZ_USFX_LAB02"), NO_API) \
 	DECLARE_SERIALIZER(APlant)
 
 
@@ -30,14 +30,14 @@ private: \
 	static void StaticRegisterNativesAPlant(); \
 	friend struct Z_Construct_UClass_APlant_Statics; \
 public: \
-	DECLARE_CLASS(APlant, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/PVZ_USFX_LAB02"), NO_API) \
+	DECLARE_CLASS(APlant, AActor, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/PVZ_USFX_LAB02"), NO_API) \
 	DECLARE_SERIALIZER(APlant)
 
 
 #define PVZ_USFX_LAB02_Source_PVZ_USFX_LAB02_Plant_h_14_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API APlant(const FObjectInitializer& ObjectInitializer); \
-	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(APlant) \
+	DEFINE_ABSTRACT_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(APlant) \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, APlant); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(APlant); \
 private: \
@@ -55,7 +55,7 @@ private: \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, APlant); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(APlant); \
-	DEFINE_DEFAULT_CONSTRUCTOR_CALL(APlant)
+	DEFINE_ABSTRACT_DEFAULT_CONSTRUCTOR_CALL(APlant)
 
 
 #define PVZ_USFX_LAB02_Source_PVZ_USFX_LAB02_Plant_h_14_PRIVATE_PROPERTY_OFFSET
