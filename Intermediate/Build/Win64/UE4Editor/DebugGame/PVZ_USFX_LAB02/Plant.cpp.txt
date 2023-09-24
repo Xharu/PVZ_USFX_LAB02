@@ -1,0 +1,7 @@
+E:\repositorios\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\DebugGame\PVZ_USFX_LAB02\Definitions.PVZ_USFX_LAB02.h
+E:\repositorios\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Plant.h
+E:\repositorios\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Plant.generated.h
+E:\repositorios\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\PVZ_USFX_LAB02Projectile.h
+E:\repositorios\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\PVZ_USFX_LAB02Projectile.generated.h
+E:\repositorios\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Zombie.h
+E:\repositorios\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Zombie.generated.h

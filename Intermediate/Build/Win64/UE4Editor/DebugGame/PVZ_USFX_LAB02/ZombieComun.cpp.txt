@@ -1,0 +1,5 @@
+E:\repositorios\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\DebugGame\PVZ_USFX_LAB02\Definitions.PVZ_USFX_LAB02.h
+E:\repositorios\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\ZombieComun.h
+E:\repositorios\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Zombie.h
+E:\repositorios\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Zombie.generated.h
+E:\repositorios\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\ZombieComun.generated.h

@@ -1,0 +1,7 @@
+E:\repositorios\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\DebugGame\PVZ_USFX_LAB02\Definitions.PVZ_USFX_LAB02.h
+D:\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
+D:\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
+E:\repositorios\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02/AbonoMagico.h
+E:\repositorios\PVZ_USFX_LAB02\Source\PVZ_USFX_LAB02\Potenciador.h
+E:\repositorios\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\Potenciador.generated.h
+E:\repositorios\PVZ_USFX_LAB02\Intermediate\Build\Win64\UE4Editor\Inc\PVZ_USFX_LAB02\AbonoMagico.generated.h
